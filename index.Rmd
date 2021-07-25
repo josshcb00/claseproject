@@ -2,8 +2,7 @@
 title: "El junco de los páramos (Junco vulcani)"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+    orientation: rows
 ---
 
 
@@ -52,7 +51,19 @@ junco_vulcani <-
 Registros de presencia, estacionalidad e historial
 =======================================================================
 
-Column {data-width=650}
+Row {data-height=100}
+-----------------------------------------------------------------------
+
+### Registros de presencia {.value-box}
+```{r valuebox}
+valueBox(value = nrow(junco_vulcani), 
+         caption = "Registros de presencia", 
+         icon = "fas fa-feather-alt",
+         color = "orange"
+)
+```
+
+Row {data-height=550}
 -----------------------------------------------------------------------
 
 ### Registros de presencia
@@ -67,7 +78,7 @@ junco_vulcani %>%
     options = list(searchHighlight = TRUE)
   )
 ```
-Column {data-width=350}
+Row {data-height=350}
 -----------------------------------------------------------------------
 
 ### Estacionalidad
@@ -106,7 +117,7 @@ junco_vulcani %>%
 
 Mapa de distribución
 =======================================================================
-Column {data-width=650}
+Row {data-height=650}
 -----------------------------------------------------------------------
 
 ### Mapa de distriubción
@@ -127,7 +138,7 @@ junco_vulcani %>%
   addCircleMarkers(
     stroke = F,
     radius = 4,
-    fillColor = 'gray',
+    fillColor = 'red',
     fillOpacity = 1,
     popup = paste(
       junco_vulcani$stateProvince,
